@@ -1,18 +1,47 @@
-var addBtn = document.querySelector(".regAddBtn");
-var regTownElem = document.querySelector("#regTown");
+var addBtn = document.querySelector(".addReg");
 var regCheckElem = document.querySelector("#regCheck");
-var regCodeElem = document.querySelector("#regCode");
+// var filterElem = ducument.querySelector("#filter");
+var displayPlateElem = document.querySelector(".dispalyPlate");
+var displayTownElem = document.querySelector("#displayTown");
+var addRegElem = document.querySelector("#addReg");
+var numberPlate = document.querySelector(".enteredRegNum");
+var dropdownElem = document.querySelector(".dropdown")
+var townsElem = document.querySelector(".towns") //CA
 
 
+var instance = RegistrationOpp();
 
-if (localStorage['name'] !== undefined) {
-    var nameStore = JSON.parse(localStorage['name']);
-} else {
-    nameStore = {};
+function regDisplayBtn() {
+    var plate = numberPlate.value;
+    instance.addReg(plate)
+
+displayReg(instance.getReg());
+
+}
+
+function displayReg(regArry){
+    displayPlateElem.innerHTML = "";
+ for (let index = 0; index < regArry.length; index++) {
+     const element = regArry[index];
+     createPlates(element)
+ }
+}
+
+
+function createPlates(reg){
+    var number = document.createElement("li");
+    number.textContent = reg;
+    displayPlateElem.appendChild(number);
+}
+
+function townsFilter(){
+    var town =townsElem.value;
+    var filteredReg = instance.filter(town)
+  displayReg(filteredReg)
 }
 
 
 
 
-
-addBtn.addEventListener('click', resetButton)
+addBtn.addEventListener('click', regDisplayBtn)
+townsElem.addEventListener('click', townsFilter)
