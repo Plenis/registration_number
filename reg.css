@@ -9,7 +9,7 @@ li {
     border: 7px solid black;
     border-radius: 25px;
     align-items: center;
-
+    position: relative;
   
   }
     
@@ -22,6 +22,7 @@ li {
     font-family: Trebuchet MS;
     font-size: 20px;
     font-weight: bold;
+    position: relative;
 
   } 
 
@@ -48,4 +49,8 @@ li {
   li{
    
     list-style-type: none;
+  }
+
+  .msg{
+    color: red;
   }
