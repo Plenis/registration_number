@@ -12,6 +12,10 @@ function RegistrationOpp() {
       
     }
 
+    function regDuplicate(plate){
+        return storedReg.includes(plate)
+    }
+
     function getReg() {
         return storedReg;
     }
@@ -59,5 +63,6 @@ function RegistrationOpp() {
         displayTown,
         getReg,
         getList,
+        regDuplicate,
     }
 }

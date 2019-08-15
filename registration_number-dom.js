@@ -8,6 +8,13 @@ var numberPlate = document.querySelector(".enteredRegNum");
 var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
 
+if (localStorage['plate'] !== undefined) {
+    var registration = JSON.parse(localStorage['plate']);
+} else {
+    registration = {};
+}
+
+
 var errMessage = document.querySelector('.ErrorMsg');
 var posMessage = document.querySelector('.positiveMsg')
 var instance = RegistrationOpp();
@@ -32,13 +39,15 @@ function regDisplayBtn() {
     console.log(result)
     // var thePlate = document.querySelector("input[name='towns']:checked");
 
+    
+
 
     if (result !== true) {
         posMessage.innerHTML = ""
         clearError()
         errMessage.innerHTML = "Invalid entry!"
     }
-    else if (plate === instance.getReg(plate)) {
+    else if (instance.regDuplicate(plate.toUpperCase())) {
         posMessage.innerHTML = ""
         clearError()
         errMessage.innerHTML = "This already exists!"
@@ -50,7 +59,7 @@ function regDisplayBtn() {
         posMessage.innerHTML = "Added successfully!"
 
     }
-
+    localStorage['plate'] = JSON.stringify(instance.getReg())
 }
 
 function displayReg(regArry) {
