@@ -1,20 +1,23 @@
-function RegistrationOpp() {
-    var storedReg = [];
-    let getTown;
+function RegistrationOpp(regi) {
+    var storedReg = regi || [];
+    // let getTown;
 
     function addReg(regNumber) {
-        regNumber = regNumber.toUpperCase();
-        getTown = regNumber;
-        if(!storedReg.includes(regNumber)){
+       var regPlate = regNumber.toUpperCase();
+        // getTown = regNumber;
+        if(!storedReg.includes(regPlate)){
 
-            storedReg.push(regNumber)
+            storedReg.push(regPlate)
+        }
+        else {
+            return "err"
         }
       
     }
 
-    function regDuplicate(plate){
-        return storedReg.includes(plate)
-    }
+    // function regDuplicate(plate){
+    //     return storedReg.includes(plate)
+    // }
 
     function getReg() {
         return storedReg;
@@ -63,6 +66,6 @@ function RegistrationOpp() {
         displayTown,
         getReg,
         getList,
-        regDuplicate,
+        // regDuplicate,
     }
 }

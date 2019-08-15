@@ -7,17 +7,20 @@ var addRegElem = document.querySelector("#addReg");
 var numberPlate = document.querySelector(".enteredRegNum");
 var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
+var clearBtn = document.querySelector(".clearReg")
 
 if (localStorage['plate'] !== undefined) {
     var registration = JSON.parse(localStorage['plate']);
 } else {
-    registration = {};
+    registration = [];
 }
+
+var instance = RegistrationOpp(registration);
 
 
 var errMessage = document.querySelector('.ErrorMsg');
 var posMessage = document.querySelector('.positiveMsg')
-var instance = RegistrationOpp();
+
 
 function clearError() {
     setTimeout(function () {
@@ -39,22 +42,19 @@ function regDisplayBtn() {
     console.log(result)
     // var thePlate = document.querySelector("input[name='towns']:checked");
 
-    
-
-
     if (result !== true) {
         posMessage.innerHTML = ""
         clearError()
         errMessage.innerHTML = "Invalid entry!"
     }
-    else if (instance.regDuplicate(plate.toUpperCase())) {
+     if (instance.addReg(plate.toUpperCase())) {
         posMessage.innerHTML = ""
         clearError()
         errMessage.innerHTML = "This already exists!"
     }
     else {
         instance.addReg(plate)
-        clearError()
+        clearMsg()
         displayReg(instance.getReg());
         posMessage.innerHTML = "Added successfully!"
 
@@ -72,6 +72,7 @@ function displayReg(regArry) {
 
 
 function createPlates(reg) {
+  //  console.log(reg)
     var number = document.createElement("li");
     number.textContent = reg;
     displayPlateElem.appendChild(number);
@@ -83,8 +84,17 @@ function townsFilter() {
     displayReg(filteredReg)
 }
 
+function clearRegBtn(){
+    localStorage.clear();
+    errMessage.innerHTML = "";
+    posMessage.innerHTML = "";
+   displayPlateElem.innerHTML = "";
+   location.reload()
+}
+
 
 
 
 addBtn.addEventListener('click', regDisplayBtn)
 townsElem.addEventListener('click', townsFilter)
+clearBtn.addEventListener('click', clearRegBtn)
