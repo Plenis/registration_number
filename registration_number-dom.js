@@ -8,12 +8,19 @@ var numberPlate = document.querySelector(".enteredRegNum");
 var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
 
-var message = document.querySelector('.msg');
+var errMessage = document.querySelector('.ErrorMsg');
+var posMessage = document.querySelector('.positiveMsg')
 var instance = RegistrationOpp();
 
 function clearError() {
     setTimeout(function () {
-        message.innerHTML = "";
+        errMessage.innerHTML = "";
+    }, 2000);
+}
+
+function clearMsg() {
+    setTimeout(function () {
+        posMessage.innerHTML = "";
     }, 2000);
 }
 
@@ -23,26 +30,26 @@ function regDisplayBtn() {
     var regex = /^[a-z]{2}\s\d[-0-9\s]{1,7}$/;
     var result = regex.test(plate);
     console.log(result)
-    var thePlate = document.querySelector("input[name='towns']:checked");
+    // var thePlate = document.querySelector("input[name='towns']:checked");
 
 
     if (result !== true) {
+        posMessage.innerHTML = ""
         clearError()
-        message.innerHTML = "Invalid entry!"
+        errMessage.innerHTML = "Invalid entry!"
     }
-    if (plate === instance.getReg(plate)) {
+    else if (plate === instance.getReg(plate)) {
+        posMessage.innerHTML = ""
         clearError()
-        message.innerHTML = "This already exists!"
+        errMessage.innerHTML = "This already exists!"
     }
     else {
         instance.addReg(plate)
+        clearError()
         displayReg(instance.getReg());
-        // message.innerHTML = "Added successfully!"
+        posMessage.innerHTML = "Added successfully!"
 
     }
-
-
-
 
 }
 
