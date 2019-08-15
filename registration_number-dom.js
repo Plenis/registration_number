@@ -12,9 +12,9 @@ var message = document.querySelector('.msg');
 var instance = RegistrationOpp();
 
 function clearError() {
-	setTimeout(function () {
-		message.innerHTML = "";
-	}, 2000);
+    setTimeout(function () {
+        message.innerHTML = "";
+    }, 2000);
 }
 
 function regDisplayBtn() {
@@ -23,19 +23,23 @@ function regDisplayBtn() {
     var regex = /^[a-z]{2}\s\d[-0-9\s]{1,7}$/;
     var result = regex.test(plate);
     console.log(result)
-        var thePlate = document.querySelector("input[name='towns']:checked");
+    var thePlate = document.querySelector("input[name='towns']:checked");
 
 
-        if(result !== true){
-            clearError()
-            message.innerHTML = "Registration number not valid! "
-        }else{
-            instance.addReg(plate)
-            displayReg(instance.getReg());
-            // message.innerHTML = "Added successfully"
+    if (result !== true) {
+        clearError()
+        message.innerHTML = "Invalid entry!"
+    }
+    if (plate === instance.getReg(plate)) {
+        clearError()
+        message.innerHTML = "This already exists!"
+    }
+    else {
+        instance.addReg(plate)
+        displayReg(instance.getReg());
+        // message.innerHTML = "Added successfully!"
 
-        }
-    
+    }
 
 
 

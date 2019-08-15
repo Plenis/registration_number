@@ -57,4 +57,13 @@ describe('registrationOpp' , function(){
         input.addReg("CA 8775")
          assert.deepEqual(input.filter("CJ", "CA", "CY"), [])
     })
+
+    it('should display alert message if reg number is repeated', function(){
+        let input = RegistrationOpp();
+        input.addReg("CA 246 894")
+        input.addReg("CA 246 894")
+        input.addReg("CY 15875")
+        input.addReg("CA 8775")
+         assert.deepEqual(input.filter("CJ", "CA", "CY"), [])
+    })
 })
