@@ -3,19 +3,19 @@ describe('registrationOpp' , function(){
     it('should display reg number for Cape Town on the screen' , function(){
         let input = RegistrationOpp();
         input.addReg("CA 125258")
-        assert.equal(input.displayTown(),["CA 125258"])
+        assert.deepEqual(input.getReg(),["CA 125258"])
     })
 
     it('should display reg number for Bellville on screen' , function(){
         let input = RegistrationOpp();
         input.addReg("CL 458")
-        assert.equal(input.displayTown(),["CL 458"])
+        assert.deepEqual(input.getReg(),["CL 458"])
     })
 
     it('should display reg number for Paarl on screen' , function(){
         let input = RegistrationOpp();
         input.addReg("CY 585 458")
-        assert.equal(input.displayTown(),["CY 585 458"])
+        assert.deepEqual(input.getReg(),["CY 585 458"])
     })
 
     it('should display reg numbers containing CA if Cape Town is selected ' , function(){

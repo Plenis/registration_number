@@ -1,10 +1,9 @@
-function RegistrationOpp(regi) {
-    var storedReg = regi || [];
-    // let getTown;
+function RegistrationOpp() {
+    var storedReg = registration || [];
 
     function addReg(regNumber) {
        var regPlate = regNumber.toUpperCase();
-        // getTown = regNumber;
+       
         if(!storedReg.includes(regPlate)){
 
             storedReg.push(regPlate)
@@ -15,28 +14,20 @@ function RegistrationOpp(regi) {
       
     }
 
-    // function regDuplicate(plate){
-    //     return storedReg.includes(plate)
-    // }
-
-    function getReg() {
+    function getRegNumbers() {
         return storedReg;
     }
     function filter(location) {
         var countReg = [];
-        // console.log(storedReg);
-
-        
-
+ 
         for (var i = 0; i < storedReg.length; i++) {
 
             var car = storedReg[i];
-            // console.log(car) ca 23333 
 
             if (car.startsWith(location)) {
                 countReg.push(car)
             }
-        }//  console.log(countReg.length)
+        }
         return countReg
     }
 
@@ -50,10 +41,6 @@ function RegistrationOpp(regi) {
         return storedReg;
     }
 
-    function displayTown() {
-        return getTown;
-    }
-
     function getList() {
         return storedReg
     }
@@ -63,9 +50,7 @@ function RegistrationOpp(regi) {
         filter,
         addReg,
         displayPlate,
-        displayTown,
-        getReg,
+        getRegNumbers,
         getList,
-        // regDuplicate,
     }
 }

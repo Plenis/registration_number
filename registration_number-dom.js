@@ -9,16 +9,16 @@ var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
 var clearBtn = document.querySelector(".clearReg")
 
+var registration = [];
 if (localStorage['plate'] !== undefined) {
-    var registration = JSON.parse(localStorage['plate']);
-} else {
-    registration = [];
+    registration = JSON.parse(localStorage['plate']);
 }
 
 var instance = RegistrationOpp(registration);
 
+displayReg(instance.getRegNumbers());
 
-var errMessage = document.querySelector('.ErrorMsg');
+var errMessage = document.querySelector('.errorMsg');
 var posMessage = document.querySelector('.positiveMsg')
 
 
@@ -40,7 +40,6 @@ function regDisplayBtn() {
     var regex = /^[a-z]{2}\s\d[-0-9\s]{1,7}$/;
     var result = regex.test(plate);
     console.log(result)
-    // var thePlate = document.querySelector("input[name='towns']:checked");
 
     if (result !== true) {
         posMessage.innerHTML = ""
@@ -55,11 +54,11 @@ function regDisplayBtn() {
     else {
         instance.addReg(plate)
         clearMsg()
-        displayReg(instance.getReg());
+        displayReg(instance.getRegNumbers());
         posMessage.innerHTML = "Added successfully!"
 
     }
-    localStorage['plate'] = JSON.stringify(instance.getReg())
+    localStorage['plate'] = JSON.stringify(instance.getRegNumbers());
 }
 
 function displayReg(regArry) {
@@ -81,7 +80,7 @@ function createPlates(reg) {
 function townsFilter() {
     var town = townsElem.value;
     var filteredReg = instance.filter(town)
-    displayReg(filteredReg)
+    displayReg(filteredReg).appendChild(town)
 }
 
 function clearRegBtn(){
@@ -96,5 +95,5 @@ function clearRegBtn(){
 
 
 addBtn.addEventListener('click', regDisplayBtn)
-townsElem.addEventListener('click', townsFilter)
+townsElem.addEventListener('change', townsFilter)
 clearBtn.addEventListener('click', clearRegBtn)
