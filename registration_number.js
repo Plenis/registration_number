@@ -1,33 +1,59 @@
-function RegistrationOpp() {
-    var storedReg = registration || [];
+function RegistrationOpp(regPlate) {
+    let message = ""
+    let storedReg =  regPlate || {};
 
-    function addReg(regNumber) {
-       var regPlate = regNumber.toUpperCase();
-       
-        if(!storedReg.includes(regPlate)){
-
-            storedReg.push(regPlate)
-        }
-        else {
-            return "err"
-        }
-      
-    }
-
-    function getRegNumbers() {
-        return storedReg;
-    }
-    function filter(location) {
-        var countReg = [];
- 
-        for (var i = 0; i < storedReg.length; i++) {
-
-            var car = storedReg[i];
-
-            if (car.startsWith(location)) {
-                countReg.push(car)
+    function isValidTown(regNumber) {
+        let regCode = ["CA", "CY", "CJ"];
+        for (let index = 0; index < regCode.length; index++) {
+            const element = regCode[index];
+            if (regNumber.startsWith(element)) {
+                // this is a valid town so I can add the reg number...
+                return true;
             }
         }
+        return false;
+    }
+
+
+    function addReg(regNumber) {
+        message = "";
+        // check if this reg number already exists    
+        if (storedReg[regNumber] === undefined) {
+            if (!isValidTown(regNumber)){
+                message = "Invalid registration number - town not supported."
+                return false;
+            }
+            // adding valid reg
+            storedReg[regNumber] = 0;
+            message = "Registration number added successfully!"
+            return true;
+
+        } else {
+            // this is a duplicate
+            message = "This registration number already exists!";
+            return false;
+        }
+        
+    }
+
+    function regMsg() {
+        return message;
+    }
+
+
+    function getRegNumbers() {
+        return Object.keys(storedReg);
+    }
+    
+    function filter(location) {
+        var countReg = [];
+
+        for (var plate in storedReg) {
+            if (plate.startsWith(location)) {
+                countReg.push(plate)
+            }
+        }
+       
         return countReg
     }
 
@@ -42,15 +68,17 @@ function RegistrationOpp() {
     }
 
     function getList() {
-        return storedReg
+        return storedReg;
     }
 
     return {
         regCheck,
         filter,
         addReg,
+        regMsg,
         displayPlate,
         getRegNumbers,
         getList,
+        isValidTown,
     }
 }

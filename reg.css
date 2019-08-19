@@ -1,20 +1,21 @@
 /* My styling */
-
+.dispalyPlate {
+  position: relative;
+  box-sizing: border-box;
+}
 li {
-    /* display: block; */
-    width: 150px;
-    height: 50px;
+    width: 300px;
+    height: 100px;
     background-color: yellow;
     box-shadow: 10px 10px 5px #888888;
-    border: 5px solid black;
-    border-radius: 50px;
+    border: 2px solid black;
+    border-radius: 15%;
     align-items: center;
     position: relative;
   
   }
     
 li {
-    /* display: block; */
     text-align: center;
     padding-top: 10px;
     margin: auto;
@@ -37,7 +38,7 @@ li {
     text-underline-position: below;
     text-decoration-style: double;
   }
-
+  
   .textbox{
     display: inline;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -55,7 +56,7 @@ li {
     list-style-type: none;
   }
 
-  .ErrorMsg{
+  .errorMsg{
     color: red;
   }
 
