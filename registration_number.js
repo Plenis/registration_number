@@ -18,6 +18,7 @@ function RegistrationOpp(regPlate) {
 
     function addReg(regNumber) {
         message = "";
+        
         // check if this reg number already exists    
         if (storedReg[regNumber] === undefined) {
             if (!isValidTown(regNumber)){
@@ -25,7 +26,10 @@ function RegistrationOpp(regPlate) {
                 return false;
             }
             // adding valid reg
-            storedReg[regNumber] = 0;
+            storedReg[regNumber]=0
+
+            // setting local storage to stored reg numbers entered
+            localStorage.setItem("plates",JSON.stringify(storedReg));
             message = "Registration number added successfully!"
             return true;
 

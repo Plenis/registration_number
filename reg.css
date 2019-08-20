@@ -9,10 +9,9 @@ li {
     background-color: yellow;
     box-shadow: 10px 10px 5px #888888;
     border: 2px solid black;
-    border-radius: 15%;
+    border-radius: 4px;
     align-items: center;
     position: relative;
-  
   }
     
 li {
@@ -29,6 +28,8 @@ li {
 
   li {
     display: inline;
+    margin: 4px;
+
   }
 
   .heading{

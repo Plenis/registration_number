@@ -8,16 +8,15 @@ var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
 var clearBtn = document.querySelector(".clearReg")
 
-var registration = [];
+//getting local storage
+var registration = JSON.parse(localStorage.getItem('plates'));
 
-if (localStorage['plate'] !== undefined) {
-    registration = JSON.parse(localStorage['plate']);
-    // console.log(registration)
-}
-
+//calling on factory function as instance
 var instance = RegistrationOpp(registration);
 
-displayReg(registration);
+//calling on function to get reg numbers to display
+displayReg(instance.getRegNumbers());
+
 
 var errMessage = document.querySelector('.errorMsg');
 var posMessage = document.querySelector('.positiveMsg')
@@ -43,7 +42,7 @@ function regDisplayBtn() {
     if (result !== true) {
         posMessage.innerHTML = ""
         clearError()
-        errMessage.innerHTML = "Invalid regis tration number - town not supported."
+        errMessage.innerHTML = "Invalid registration number - town not supported."
     }
     else if (instance.addReg(plate.toUpperCase())) {
         displayReg(instance.getRegNumbers());
@@ -53,15 +52,13 @@ function regDisplayBtn() {
         errMessage.innerHTML = instance.regMsg();
         clearError();
     }
-    localStorage['plate'] = JSON.stringify(instance.getRegNumbers());
 }
 
 function displayReg(reg) {
-
     displayPlateElem.innerHTML = "";
     for (let index = 0; index < reg.length; index++) {
         const element = reg[index];
-        console.log(element)
+        
         createPlates(element)
     }
 }
@@ -70,10 +67,9 @@ function displayReg(reg) {
 function createPlates(reg) {
     var li = document.createElement("li");
     li.textContent = reg;
-   // console.log(number)
     displayPlateElem.appendChild(li);
 }
-
+ 
 function townsFilter() {
     var town = townsElem.value;
     var filteredReg = instance.filter(town)
