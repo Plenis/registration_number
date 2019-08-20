@@ -4,6 +4,7 @@ function RegistrationOpp(regPlate) {
 
     function isValidTown(regNumber) {
         let regCode = ["CA", "CY", "CJ"];
+
         for (let index = 0; index < regCode.length; index++) {
             const element = regCode[index];
             if (regNumber.startsWith(element)) {

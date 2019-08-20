@@ -8,16 +8,16 @@ var dropdownElem = document.querySelector(".dropdown")
 var townsElem = document.querySelector(".towns") //CA
 var clearBtn = document.querySelector(".clearReg")
 
-var registration = {};
+var registration = [];
 
 if (localStorage['plate'] !== undefined) {
     registration = JSON.parse(localStorage['plate']);
-    console.log(registration)
+    // console.log(registration)
 }
 
 var instance = RegistrationOpp(registration);
 
-displayReg(instance.getRegNumbers());
+displayReg(registration);
 
 var errMessage = document.querySelector('.errorMsg');
 var posMessage = document.querySelector('.positiveMsg')
@@ -56,22 +56,22 @@ function regDisplayBtn() {
     localStorage['plate'] = JSON.stringify(instance.getRegNumbers());
 }
 
-function displayReg() {
+function displayReg(reg) {
 
     displayPlateElem.innerHTML = "";
-    for (let index = 0; index < registration.length; index++) {
-        const element = registration[index];
-
+    for (let index = 0; index < reg.length; index++) {
+        const element = reg[index];
+        console.log(element)
         createPlates(element)
     }
 }
 
 
 function createPlates(reg) {
-    console.log(reg)
-    var number = document.createElement("li");
-    number.textContent = reg;
-    displayPlateElem.appendChild(number);
+    var li = document.createElement("li");
+    li.textContent = reg;
+   // console.log(number)
+    displayPlateElem.appendChild(li);
 }
 
 function townsFilter() {
