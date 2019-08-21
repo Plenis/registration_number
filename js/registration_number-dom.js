@@ -9,9 +9,12 @@ var townsElem = document.querySelector(".towns") //CA
 var clearBtn = document.querySelector(".clearReg")
 
 //getting local storage
+
 var registration = JSON.parse(localStorage.getItem('plates'));
 
 //calling on factory function as instance
+console.info(`registration numbers: ${registration}`);
+
 var instance = RegistrationOpp(registration);
 
 //calling on function to get reg numbers to display
@@ -48,6 +51,8 @@ function regDisplayBtn() {
         displayReg(instance.getRegNumbers());
         posMessage.innerHTML = instance.regMsg();
         clearMsg();
+        // setting local storage
+        localStorage.setItem("plates", JSON.stringify(instance.storedReg));
     } else {
         errMessage.innerHTML = instance.regMsg();
         clearError();
@@ -56,20 +61,19 @@ function regDisplayBtn() {
 
 function displayReg(reg) {
     displayPlateElem.innerHTML = "";
-    for (let index = 0; index < reg.length; index++) {
-        const element = reg[index];
-        
+    for (var x in reg) {
+        const element = reg[x];
+        console.log(element)
         createPlates(element)
     }
 }
-
 
 function createPlates(reg) {
     var li = document.createElement("li");
     li.textContent = reg;
     displayPlateElem.appendChild(li);
 }
- 
+
 function townsFilter() {
     var town = townsElem.value;
     var filteredReg = instance.filter(town)
@@ -88,5 +92,7 @@ function clearRegBtn() {
 
 
 addBtn.addEventListener('click', regDisplayBtn)
+
 townsElem.addEventListener('change', townsFilter)
+
 clearBtn.addEventListener('click', clearRegBtn)

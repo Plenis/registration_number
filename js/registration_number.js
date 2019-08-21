@@ -1,6 +1,6 @@
 function RegistrationOpp(regPlate) {
     let message = ""
-    let storedReg =  regPlate || {};
+    let storedReg = regPlate || {};
 
     function isValidTown(regNumber) {
         let regCode = ["CA", "CY", "CJ"];
@@ -18,18 +18,16 @@ function RegistrationOpp(regPlate) {
 
     function addReg(regNumber) {
         message = "";
-        
+
         // check if this reg number already exists    
         if (storedReg[regNumber] === undefined) {
-            if (!isValidTown(regNumber)){
+            if (!isValidTown(regNumber)) {
                 message = "Invalid registration number - town not supported."
                 return false;
             }
             // adding valid reg
-            storedReg[regNumber]=0
+            storedReg[regNumber] = 0;
 
-            // setting local storage to stored reg numbers entered
-            localStorage.setItem("plates",JSON.stringify(storedReg));
             message = "Registration number added successfully!"
             return true;
 
@@ -38,7 +36,7 @@ function RegistrationOpp(regPlate) {
             message = "This registration number already exists!";
             return false;
         }
-        
+
     }
 
     function regMsg() {
@@ -49,7 +47,7 @@ function RegistrationOpp(regPlate) {
     function getRegNumbers() {
         return Object.keys(storedReg);
     }
-    
+
     function filter(location) {
         var countReg = [];
 
@@ -58,7 +56,7 @@ function RegistrationOpp(regPlate) {
                 countReg.push(plate)
             }
         }
-       
+
         return countReg
     }
 
@@ -85,5 +83,6 @@ function RegistrationOpp(regPlate) {
         getRegNumbers,
         getList,
         isValidTown,
+        storedReg,
     }
 }

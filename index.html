@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <b><ruby><title>Registration Numbers</title></ruby></b>
+    <b><ruby>
+            <title>Registration Numbers</title>
+        </ruby></b>
 
-    <link rel="stylesheet" href="registration-simplegrid.css">
-    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="css/registration-simplegrid.css">
+    <link rel="stylesheet" href="css/reg.css">
 </head>
 
 <body>
@@ -17,27 +19,29 @@
     </div>
 
     <div id="box" class="col-12">
-    <div class="col-12 center">
-        <input type="text" class="enteredRegNum"placeholder="Enter Valid Reg Number">
+        <div class="col-12 center">
+            <input type="text" class="enteredRegNum" placeholder="Enter Valid Reg Number">
+        </div>
     </div>
-    </div>
-<br>
+    
+    <br>
+
     <div class="regAddBtn col-12 center" name="regAddBtn">
         <button class="addReg">ADD</button><button class="clearReg">CLEAR</button>
         <br><br>
         <div class='row1'>
             <select class="towns center" names="towns">
-            <option value="">Select Town</option>
-            <option value="CA">Cape Town</option>
-            <option value="CY">Bellville</option>
-            <option value="CJ">Paarl</option>
-       </select>
-    </div>
+                <option value="">Select Town</option>
+                <option value="CA">Cape Town</option>
+                <option value="CY">Bellville</option>
+                <option value="CJ">Paarl</option>
+            </select>
+        </div>
 
     </div>
 
     <br><br>
- 
+
     <div class='col-12 center'>
         <p class='errorMsg'></p>
     </div>
@@ -47,29 +51,16 @@
     </div>
 
     <div class="row2">
-     <div class="dispalyPlate col-8 center">
-    
+
+        <div class="dispalyPlate col-8 center">
+
+        </div>
+
     </div>
-</div>
     </div>
 
-    <!-- <div id="number-plate col-6">
-        <div id="reg-number col-6">
-            CA 123 456
-</div>     -->
-
-<!-- <div class='row'>
-    <div class='col-12 center'>
-    <p class='ErrorMsg'></p>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div id='reg-number-display' class='col-12'>
-
-    </div> -->
-    <script src="registration_number.js"> charset="utf-8"</script>
-<script src="registration_number-dom.js" charset="utf-8"></script>
+    <script src="js/registration_number.js"> charset = "utf-8"</script>
+    <script src="js/registration_number-dom.js" charset="utf-8"></script>
 
 </body>
 
