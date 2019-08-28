@@ -13,8 +13,6 @@ var clearBtn = document.querySelector(".clearReg")
 var registration = JSON.parse(localStorage.getItem('plates'));
 
 //calling on factory function as instance
-console.info(`registration numbers: ${registration}`);
-
 var instance = RegistrationOpp(registration);
 
 //calling on function to get reg numbers to display

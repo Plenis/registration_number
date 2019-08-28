@@ -4,17 +4,13 @@ var displayPlateTemp = document.querySelector(".dispalyPlateTemp");
 var displayTownTemp = document.querySelector("#displayTown");
 var addRegTemp = document.querySelector("#addReg");
 var numberPlateTemp = document.querySelector(".enteredRegNumTemp");
-var dropdownTemp = document.querySelector(".dropdown")
 var townsTemp = document.querySelector(".townsTemp") //CA
 var clearBtnTemp = document.querySelector(".clearRegTemp")
-
-//getting local storage
 
 var registrationTemp = JSON.parse(localStorage.getItem('plates'));
 
 var instanceTemp = RegistrationOpp(registrationTemp);
 
-//calling on function to get reg numbers to display
 displayReg(instanceTemp.getRegNumbers());
 
 
@@ -37,7 +33,7 @@ function clearMsgTemp() {
 function regDisplayBtnTemp() {
     var plateTemp = numberPlateTemp.value.toUpperCase();
     var regexTemp = /^[A-Z]{2}\s\d[-0-9\s]{1,7}$/;
-    var resultTemp = regexTemp.test(plate);
+    var resultTemp = regexTemp.test(plateTemp);
 
     if (resultTemp !== true) {
         posMessageTemp.innerHTML = ""
