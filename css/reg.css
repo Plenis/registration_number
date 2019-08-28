@@ -64,3 +64,11 @@ li {
   .positiveMsg{
     color: green;
   }
+
+  .positiveMsgTemp{
+    color: green;
+  }
+
+  .errorMsgTemp{
+    color: red;
+  }

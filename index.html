@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <div class="col-6">
     <div class="heading col-12">
         <h1>REGISTRATION NUMBERS</h1>
     </div>
@@ -58,9 +59,64 @@
 
     </div>
     </div>
+</div>
+
+
+    <!--Registration Template-->
+
+
+    <body>
+        <div class="col-6">
+            <div class="heading col-12">
+                <h1>REGISTRATION NUMBERS</h1>
+            </div>
+        
+            <div id="box" class="col-12">
+                <div class="col-12 center">
+                    <input type="text" class="enteredRegNumTemp" placeholder="Enter Valid Reg Number">
+                </div>
+            </div>
+            
+            <br>
+        
+            <div class="regAddBtnTemp col-12 center" name="regAddBtn">
+                <button class="addRegTemp">ADD</button><button class="clearRegTemp">CLEAR</button>
+                <br><br>
+                <div class='row1'>
+                    <select class="townsTemp center" names="towns">
+                        <option value="">Select Town</option>
+                        <option value="CA">Cape Town</option>
+                        <option value="CY">Bellville</option>
+                        <option value="CJ">Paarl</option>
+                    </select>
+                </div>
+        
+            </div>
+        
+            <br><br>
+        
+            <div class='col-12 center'>
+                <p class='errorMsgTemp'></p>
+            </div>
+        
+            <div class='col-12 center'>
+                <p class='positiveMsgTemp'></p>
+            </div>
+        
+            <div class="row2">
+        
+                <div class="dispalyPlateTemp col-8 center">
+        
+                </div>
+        
+            </div>
+            </div>
+            </div>
 
     <script src="js/registration_number.js"> charset = "utf-8"</script>
     <script src="js/registration_number-dom.js" charset="utf-8"></script>
+
+    <script src="jsTemp/regTemp.dom.js"></script>
 
 </body>
 

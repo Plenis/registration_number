@@ -61,7 +61,6 @@ function RegistrationOpp(regPlate) {
     }
 
 
-
     function regCheck(cars, code) {
         return cars.startsWith(code)
     }
