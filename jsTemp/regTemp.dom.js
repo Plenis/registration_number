@@ -6,6 +6,7 @@ var displayTownTemp = document.querySelector("#displayTown");
 var numberPlateTemp = document.querySelector(".enteredRegNumTemp");
 var townsTemp = document.querySelector(".townsTemp");
 var clearBtnTemp = document.querySelector(".clearRegTemp");
+var displayRegDiv = document.querySelector('.displayRegTemplate');
 
 var registrationTemp = JSON.parse(localStorage.getItem("tempPlate"));
 
@@ -42,7 +43,7 @@ function regDisplayBtnTemp() {
     errMessageTemp.innerHTML =
       "Invalid registration number - town not supported.";
   } else if (instanceTemp.addReg(plateTemp.toUpperCase())) {
-    displayReg(instanceTemp.getRegNumbers());
+    displayRegTemp(instanceTemp.getRegNumbers());
     posMessageTemp.innerHTML = instanceTemp.regMsg();
     clearMsgTemp();
     // setting local storage
@@ -56,7 +57,7 @@ function regDisplayBtnTemp() {
 function townsFilterTemp() {
   var tempTown = townsTemp.value;
   var tempFilteredReg = instanceTemp.filter(tempTown);
-  displayReg(tempFilteredReg);
+  displayRegTemp(tempFilteredReg);
 }
 
 function clearRegBtnTemp() {
@@ -67,10 +68,15 @@ function clearRegBtnTemp() {
   location.reload();
 }
 
-function displayRegTemp(registration) {
+function displayRegTemp(regList) {
+ console.log(regList);
+ 
   var regData = { plates: regList };
 
   var regDataHTML = regTemplate(regData);
+
+  displayRegDiv.innerHTML = regDataHTML;
+
 }
 
 // var regAdded = instanceTemp.addReg();
