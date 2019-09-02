@@ -1,91 +1,87 @@
 var addBtnTemp = document.querySelector(".addRegTemp");
-var regCheckTemp = document.querySelector("#regCheck");
+var regCheckTemp = document.querySelector("#regCheckTemp");
 var displayPlateTemp = document.querySelector(".dispalyPlateTemp");
 var displayTownTemp = document.querySelector("#displayTown");
-var addRegTemp = document.querySelector("#addReg");
+// var addRegTemp = document.querySelector("#addReg");
 var numberPlateTemp = document.querySelector(".enteredRegNumTemp");
-var townsTemp = document.querySelector(".townsTemp") //CA
-var clearBtnTemp = document.querySelector(".clearRegTemp")
+var townsTemp = document.querySelector(".townsTemp");
+var clearBtnTemp = document.querySelector(".clearRegTemp");
 
-var registrationTemp = JSON.parse(localStorage.getItem('plates'));
+var registrationTemp = JSON.parse(localStorage.getItem("tempPlate"));
 
 var instanceTemp = RegistrationOpp(registrationTemp);
 
-displayReg(instanceTemp.getRegNumbers());
+// instanceTemp.displayReg(instanceTemp.getRegNumbers());
 
+var templateSource = document.querySelector(".regTemplate").innerHTML;
+var regTemplate = Handlebars.compile(templateSource);
 
-var errMessageTemp = document.querySelector('.errorMsgTemp');
-var posMessageTemp = document.querySelector('.positiveMsgTemp')
-
+var errMessageTemp = document.querySelector(".errorMsgTemp");
+var posMessageTemp = document.querySelector(".positiveMsgTemp");
 
 function clearErrorTemp() {
-    setTimeout(function () {
-        errMessageTemp.innerHTML = "";
-    }, 2000);
+  setTimeout(function() {
+    errMessageTemp.innerHTML = "";
+  }, 2000);
 }
 
 function clearMsgTemp() {
-    setTimeout(function () {
-        posMessageTemp.innerHTML = "";
-    }, 2000);
+  setTimeout(function() {
+    posMessageTemp.innerHTML = "";
+  }, 2000);
 }
 
 function regDisplayBtnTemp() {
-    var plateTemp = numberPlateTemp.value.toUpperCase();
-    var regexTemp = /^[A-Z]{2}\s\d[-0-9\s]{1,7}$/;
-    var resultTemp = regexTemp.test(plateTemp);
-
-    if (resultTemp !== true) {
-        posMessageTemp.innerHTML = ""
-        clearErrorTemp()
-        errMessageTemp.innerHTML = "Invalid registration number - town not supported."
-    }
-    else if (instanceTemp.addReg(plateTemp.toUpperCase())) {
-        displayReg(instanceTemp.getRegNumbers());
-        posMessageTemp.innerHTML = instanceTemp.regMsg();
-        clearMsgTemp();
-        // setting local storage
-        localStorage.setItem("plates", JSON.stringify(instanceTemp.storedReg));
-    } else {
-        errMessageTemp.innerHTML = instanceTemp.regMsg();
-        clearErrorTemp();
-    }
-}
-
-function displayRegTemp(regTemp) {
-    displayPlateElem.innerHTML = "";
-    for (var x in regTemp) {
-        const tempElement = regTemp[x];
-        console.log(tempElement)
-        createPlates(tempElement)
-    }
-}
-
-function createPlates(regTemp) {
-    var tempList = document.createElement("li");
-    tempList.textContent = regTemp;
-    displayPlateTemp.appendChild(tempList);
+  var plateTemp = numberPlateTemp.value.toUpperCase();
+  var regexTemp = /^[A-Z]{2}\s\d[-0-9\s]{1,7}$/;
+  var resultTemp = regexTemp.test(plateTemp);
+  console.log("resultTemp", resultTemp);
+  if (resultTemp !== true) {
+    posMessageTemp.innerHTML = "";
+    clearErrorTemp();
+    errMessageTemp.innerHTML =
+      "Invalid registration number - town not supported.";
+  } else if (instanceTemp.addReg(plateTemp.toUpperCase())) {
+    displayReg(instanceTemp.getRegNumbers());
+    posMessageTemp.innerHTML = instanceTemp.regMsg();
+    clearMsgTemp();
+    // setting local storage
+    localStorage.setItem("tempPlate", JSON.stringify(instanceTemp.storedReg));
+  } else {
+    errMessageTemp.innerHTML = instanceTemp.regMsg();
+    clearErrorTemp();
+  }
 }
 
 function townsFilterTemp() {
-    var tempTown = townsTemp.value;
-    var tempFilteredReg = instanceTemp.filter(tempTown)
-    displayReg(tempFilteredReg).appendChild(tempTown)
+  var tempTown = townsTemp.value;
+  var tempFilteredReg = instanceTemp.filter(tempTown);
+  displayReg(tempFilteredReg);
 }
 
 function clearRegBtnTemp() {
-    localStorage.clear();
-    errMessageTemp.innerHTML = "";
-    posMessageTemp.innerHTML = "";
-    displayPlateTemp.innerHTML = "";
-    location.reload()
+  localStorage.clear();
+  errMessageTemp.innerHTML = "";
+  posMessageTemp.innerHTML = "";
+  displayPlateTemp.innerHTML = "";
+  location.reload();
 }
 
+function displayRegTemp(registration) {
+  var regData = { plates: regList };
 
+  var regDataHTML = regTemplate(regData);
+}
 
+// var regAdded = instanceTemp.addReg();
+// var regList = instanceTemp.displayReg(regAdded);
 
-addBtnTemp.addEventListener('click', regDisplayBtnTemp)
+// var regData = ({plate: regList});
 
-townsTemp.addEventListener('change', townsFilterTemp)
+// var regDataHTML = regTemplate(regData);
 
-clearBtnTemp.addEventListener('click', clearRegBtnTemp)
+addBtnTemp.addEventListener("click", regDisplayBtnTemp);
+
+townsTemp.addEventListener("change", townsFilterTemp);
+
+clearBtnTemp.addEventListener("click", clearRegBtnTemp);

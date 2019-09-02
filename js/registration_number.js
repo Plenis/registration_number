@@ -6,8 +6,8 @@ function RegistrationOpp(regPlate) {
         let regCode = ["CA", "CY", "CJ"];
 
         for (let index = 0; index < regCode.length; index++) {
-            const element = regCode[index];
-            if (regNumber.startsWith(element)) {
+            const plateCode = regCode[index];
+            if (regNumber.startsWith(plateCode)) {
                 // this is a valid town so I can add the reg number...
                 return true;
             }

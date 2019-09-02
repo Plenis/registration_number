@@ -9,109 +9,114 @@
             <title>Registration Numbers</title>
         </ruby></b>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+        <script type="text/x-template" class="regTemplate">
+            {{#each plates}}
+            <tr>
+              <td>{{numberPlate}}</td>
+            </tr>
+            {{/each}}
+        </script>
+
     <link rel="stylesheet" href="css/registration-simplegrid.css">
     <link rel="stylesheet" href="css/reg.css">
 </head>
 
 <body>
     <div class="col-6">
-    <div class="heading col-12">
-        <h1>REGISTRATION NUMBERS</h1>
-    </div>
-
-    <div id="box" class="col-12">
-        <div class="col-12 center">
-            <input type="text" class="enteredRegNum" placeholder="Enter Valid Reg Number">
+        <div class="heading col-12">
+            <h1>REGISTRATION NUMBERS</h1>
         </div>
-    </div>
-    
-    <br>
 
-    <div class="regAddBtn col-12 center" name="regAddBtn">
-        <button class="addReg">ADD</button><button class="clearReg">CLEAR</button>
+        <div id="box" class="col-12">
+            <div class="col-12 center">
+                <input type="text" class="enteredRegNum" placeholder="Enter Valid Reg Number">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="regAddBtn col-12 center" name="regAddBtn">
+            <button class="addReg">ADD</button><button class="clearReg">CLEAR</button>
+            <br><br>
+            <div class='row1'>
+                <select class="towns center" names="towns">
+                    <option value="">Select Town</option>
+                    <option value="CA">Cape Town</option>
+                    <option value="CY">Bellville</option>
+                    <option value="CJ">Paarl</option>
+                </select>
+            </div>
+
         <br><br>
-        <div class='row1'>
-            <select class="towns center" names="towns">
-                <option value="">Select Town</option>
-                <option value="CA">Cape Town</option>
-                <option value="CY">Bellville</option>
-                <option value="CJ">Paarl</option>
-            </select>
+
+        <div class='col-12 center'>
+            <p class='errorMsg'></p>
         </div>
 
-    </div>
-
-    <br><br>
-
-    <div class='col-12 center'>
-        <p class='errorMsg'></p>
-    </div>
-
-    <div class='col-12 center'>
-        <p class='positiveMsg'></p>
-    </div>
-
-    <div class="row2">
-
-        <div class="dispalyPlate col-8 center">
-
+        <div class='col-12 center'>
+            <p class='positiveMsg'></p>
         </div>
 
+        <div class="row2">
+        </div>
+          
+            <div class="dispalyPlate">
+              
+            </div>
+        </div>
+        
     </div>
-    </div>
-</div>
 
 
     <!--Registration Template-->
 
 
-    <body>
-        <div class="col-6">
-            <div class="heading col-12">
-                <h1>REGISTRATION NUMBERS</h1>
+    <div class="temp col-6">
+        <div class="heading1 col-12">
+            <h1>REGISTRATION NUMBERS</h1>
+        </div>
+
+        <div id="box1" class="temp col-12">
+            <div class="temp col-12 center">
+                <input type="text" class="enteredRegNumTemp" placeholder="Enter Valid Reg Number">
             </div>
-        
-            <div id="box" class="col-12">
-                <div class="col-12 center">
-                    <input type="text" class="enteredRegNumTemp" placeholder="Enter Valid Reg Number">
-                </div>
-            </div>
-            
-            <br>
-        
-            <div class="regAddBtnTemp col-12 center" name="regAddBtn">
-                <button class="addRegTemp">ADD</button><button class="clearRegTemp">CLEAR</button>
-                <br><br>
-                <div class='row1'>
-                    <select class="townsTemp center" names="towns">
-                        <option value="">Select Town</option>
-                        <option value="CA">Cape Town</option>
-                        <option value="CY">Bellville</option>
-                        <option value="CJ">Paarl</option>
-                    </select>
-                </div>
-        
-            </div>
-        
+        </div>
+
+        <br>
+
+        <div class="regBtnTemp col-12 center" name="regAddBtn">
+            <button class="addRegTemp">ADD</button><button class="clearRegTemp">CLEAR</button>
             <br><br>
-        
-            <div class='col-12 center'>
-                <p class='errorMsgTemp'></p>
+            <div class='row2'>
+                <select class="townsTemp center" names="towns">
+                    <option value="">Select Town</option>
+                    <option value="CA">Cape Town</option>
+                    <option value="CY">Bellville</option>
+                    <option value="CJ">Paarl</option>
+                </select>
             </div>
+
+        </div>
+
+        <br><br>
+
+        <div class='temp col-12 center'>
+            <p class='errorMsgTemp'></p>
+        </div>
+
+        <div class='temp col-12 center'>
+            <p class='positiveMsgTemp'></p>
+        </div>
+
+        <div class="row3">
+            <tbody class="regTemplate">
         
-            <div class='col-12 center'>
-                <p class='positiveMsgTemp'></p>
-            </div>
-        
-            <div class="row2">
-        
-                <div class="dispalyPlateTemp col-8 center">
-        
-                </div>
-        
-            </div>
-            </div>
-            </div>
+            </tbody>
+
+        </div>
+    </div>
 
     <script src="js/registration_number.js"> charset = "utf-8"</script>
     <script src="js/registration_number-dom.js" charset="utf-8"></script>

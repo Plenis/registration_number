@@ -39,7 +39,7 @@ function regDisplayBtn() {
     var plate = numberPlate.value.toUpperCase();
     var regex = /^[A-Z]{2}\s\d[-0-9\s]{1,7}$/;
     var result = regex.test(plate);
-
+    
     if (result !== true) {
         posMessage.innerHTML = ""
         clearError()
@@ -61,7 +61,6 @@ function displayReg(reg) {
     displayPlateElem.innerHTML = "";
     for (var x in reg) {
         const element = reg[x];
-        console.log(element)
         createPlates(element)
     }
 }
@@ -75,7 +74,7 @@ function createPlates(reg) {
 function townsFilter() {
     var town = townsElem.value;
     var filteredReg = instance.filter(town)
-    displayReg(filteredReg).appendChild(town)
+    displayReg(filteredReg)
 }
 
 function clearRegBtn() {
