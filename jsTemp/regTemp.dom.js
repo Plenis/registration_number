@@ -1,6 +1,6 @@
 var addBtnTemp = document.querySelector(".addRegTemp");
 var regCheckTemp = document.querySelector("#regCheckTemp");
-var displayPlateTemp = document.querySelector(".dispalyPlateTemp");
+var displayRegTemplate = document.querySelector(".displayRegTemplate");
 var displayTownTemp = document.querySelector("#displayTown");
 // var addRegTemp = document.querySelector("#addReg");
 var numberPlateTemp = document.querySelector(".enteredRegNumTemp");
@@ -64,7 +64,7 @@ function clearRegBtnTemp() {
   localStorage.removeItem('tempPlate');
   errMessageTemp.innerHTML = "";
   posMessageTemp.innerHTML = "";
-  displayPlateTemp.innerHTML = "";
+  displayRegTemplate.innerHTML = "";
   location.reload();
 }
 
