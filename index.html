@@ -13,9 +13,7 @@
 
         <script type="text/x-template" class="regTemplate">
             {{#each plates}}
-            <tr>
-              <td>{{numberPlate}}</td>
-            </tr>
+              <li>{{this}}</li>
             {{/each}}
         </script>
 
@@ -62,9 +60,9 @@
         <div class="row2">
         </div>
           
-            <div class="dispalyPlate">
+            <ul class="dispalyPlate">
               
-            </div>
+    </ul>
         </div>
         
     </div>
@@ -75,7 +73,7 @@
 
     <div class="temp col-6">
         <div class="heading1 col-12">
-            <h1>REGISTRATION NUMBERS</h1>
+            <h1 style="text-align: center">REGISTRATION NUMBERS</h1>
         </div>
 
         <div id="box1" class="temp col-12">
@@ -111,9 +109,9 @@
         </div>
 
         <div class="row3">
-            <tbody class="displayRegTemplate">
+            <ul class="displayRegTemplate">
         
-            </tbody>
+            </ul>
 
         </div>
     </div>

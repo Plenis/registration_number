@@ -6,7 +6,7 @@ var displayTownTemp = document.querySelector("#displayTown");
 var numberPlateTemp = document.querySelector(".enteredRegNumTemp");
 var townsTemp = document.querySelector(".townsTemp");
 var clearBtnTemp = document.querySelector(".clearRegTemp");
-var displayRegDiv = document.querySelector('.displayRegTemplate');
+var displayRegDiv = document.querySelector(".displayRegTemplate");
 
 var registrationTemp = JSON.parse(localStorage.getItem("tempPlate"));
 
@@ -61,7 +61,7 @@ function townsFilterTemp() {
 }
 
 function clearRegBtnTemp() {
-  localStorage.clear();
+  localStorage.removeItem('tempPlate');
   errMessageTemp.innerHTML = "";
   posMessageTemp.innerHTML = "";
   displayPlateTemp.innerHTML = "";
@@ -69,22 +69,12 @@ function clearRegBtnTemp() {
 }
 
 function displayRegTemp(regList) {
- console.log(regList);
- 
+  console.log(regList);
+
   var regData = { plates: regList };
-
   var regDataHTML = regTemplate(regData);
-
   displayRegDiv.innerHTML = regDataHTML;
-
 }
-
-// var regAdded = instanceTemp.addReg();
-// var regList = instanceTemp.displayReg(regAdded);
-
-// var regData = ({plate: regList});
-
-// var regDataHTML = regTemplate(regData);
 
 addBtnTemp.addEventListener("click", regDisplayBtnTemp);
 

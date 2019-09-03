@@ -78,7 +78,7 @@ function townsFilter() {
 }
 
 function clearRegBtn() {
-    localStorage.clear();
+    localStorage.removeItem('plates');
     errMessage.innerHTML = "";
     posMessage.innerHTML = "";
     displayPlateElem.innerHTML = "";
