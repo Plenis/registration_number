@@ -11,7 +11,6 @@ var displayRegDiv = document.querySelector(".displayRegTemplate");
 var registrationTemp = JSON.parse(localStorage.getItem("tempPlate"));
 
 var instanceTemp = RegistrationOpp(registrationTemp);
-
 // instanceTemp.displayReg(instanceTemp.getRegNumbers());
 
 var templateSource = document.querySelector(".regTemplate").innerHTML;
@@ -19,6 +18,9 @@ var regTemplate = Handlebars.compile(templateSource);
 
 var errMessageTemp = document.querySelector(".errorMsgTemp");
 var posMessageTemp = document.querySelector(".positiveMsgTemp");
+
+//called on function that contains all data underneath templated regs to appear after refresh
+townsFilterTemp()
 
 function clearErrorTemp() {
   setTimeout(function() {
@@ -69,10 +71,9 @@ function clearRegBtnTemp() {
 }
 
 function displayRegTemp(regList) {
-  console.log(regList);
-
   var regData = { plates: regList };
   var regDataHTML = regTemplate(regData);
+  console.log(regDataHTML)
   displayRegDiv.innerHTML = regDataHTML;
 }
 
